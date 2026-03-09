@@ -14,6 +14,9 @@ opt.autoindent = true
 
 opt.wrap = false
 
+-- mouse
+opt.mousescroll = "ver:1,hor:0"
+
 -- search settings
 opt.ignorecase = true
 opt.smartcase = true
