@@ -36,11 +36,14 @@ return {
 				-- Lua
 				lua = { "stylua" },
 			},
+			--[[
 			format_on_save = {
 				lsp_fallback = true,
 				async = false,
 				timeout_ms = 3000,
 			},
+      ]]
+			format_on_save = false,
 		})
 
 		vim.keymap.set({ "n", "v" }, "<leader>mp", function()
