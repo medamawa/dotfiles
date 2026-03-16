@@ -13,3 +13,10 @@ if [ -e "$HOME/.config/nvim" ] && [ ! -L "$HOME/.config/nvim" ]; then
 fi
 ln -sf "$CONFIGS/nvim" "$HOME/.config/nvim"
 echo "linked: nvim config"
+
+# wezterm
+if [ -e "$HOME/.config/wezterm" ] && [ ! -L "$HOME/.config/wezterm" ]; then
+  mv "$HOME/.config/wezterm" "$HOME/.config/wezterm.bak"
+fi
+ln -sf "$CONFIGS/wezterm" "$HOME/.config/wezterm"
+echo "linked: wezterm config"
