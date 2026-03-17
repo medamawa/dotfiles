@@ -41,7 +41,7 @@ backup_if_needed() {
   # Backup when target exists
   if [[ -e "$target" && ! -L "$target" ]]; then
     mv "$target" "${target}.bak"
-    log_warn "backup: $target -> ${target}.bak"
+    log_warn "Backup: [ $target ] -> [ ${target}.bak ]"
   fi
 }
 
@@ -60,11 +60,11 @@ safe_link() {
   # Remove if symlink exists
   if [[ -L "$dst" ]]; then
     rm "$dst"
-    log_warn "symlink [ $dst ] removed."
+    log_warn "Symlink [ $dst ] removed."
   else
     backup_if_needed "$dst"
   fi
 
   ln -s "$src" "$dst"
-  log_success "linked: $src -> $dst"
+  log_success "Linked: [ $src ] -> [ $dst ]"
 }

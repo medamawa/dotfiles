@@ -21,11 +21,11 @@ brew_install() {
   local pkg="$1"
 
   if brew list --formula "$pkg" &>/dev/null; then
-    log_info "$pkg already installed."
+    log_info "'$pkg' already installed."
   else
-    log_info "Installing $pkg..."
+    log_info "Installing '$pkg'..."
     brew install "$pkg"
-    log_success "$pkg installed."
+    log_success "'$pkg' installed."
   fi
 }
 
@@ -33,12 +33,11 @@ brew_cask_install() {
   local pkg="$1"
 
   if brew list --cask "$pkg" &>/dev/null; then
-    log_info "$pkg (cask) already installed."
+    log_info "'$pkg (cask)' already installed."
   else
-    log_info "Installing $pkg (cask)..."
+    log_info "Installing '$pkg (cask)'..."
     brew install --cask "$pkg"
-    log_success "$pkg (cask) installed."
+    log_success "'$pkg (cask)' installed."
   fi
 }
-
 
