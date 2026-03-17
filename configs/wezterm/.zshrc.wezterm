@@ -7,3 +7,6 @@ source /usr/local/share/powerlevel10k/powerlevel10k.zsh-theme
 # zsh-syntax-highlighting
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# zsh-autosuggestions
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
