@@ -17,5 +17,7 @@
 # Usage
 
 ```shell
+cd ~
+git clone https://github.com/medamawa/dotfiles.git
 sh dotfiles/setup.sh
 ```
