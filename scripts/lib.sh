@@ -28,9 +28,8 @@ log_error() {
   echo "${RED}[ERR]${NC}  $1"
 }
 
-
 # ------------------------------------------------- #
-# backup_id_needed (target)                         #
+# backup_id_needed <target>                         #
 #                                                   #
 # If the target exists and is NOT a symlink,        #
 # move it to a `.bak` file to avoid data loss.      #
@@ -45,9 +44,8 @@ backup_if_needed() {
   fi
 }
 
-
 # ------------------------------------------------- #
-# safe_link (src, dst)                              #
+# safe_link <src> <dst>                             #
 #                                                   #
 # Safely create a symbolic link.                    #
 # ------------------------------------------------- #
@@ -67,4 +65,55 @@ safe_link() {
 
   ln -s "$src" "$dst"
   log_success "Linked: [ $src ] -> [ $dst ]"
+}
+
+# ------------------------------------------------- #
+# append_if_missing [-p, f] <file> <line>           #
+#                                                   #
+# Append a line to a file it it doesn't exist yet.  #
+# Use -p to prepend to the beginning instead        #
+# Use -f to skip the duplicate check (force)        #
+# ------------------------------------------------- #
+append_if_missing() {
+  local prepend=false
+  local force=false
+  while [[ "${1:-}" == -* ]]; do
+    local flags="${1#-}"
+    shift
+    while [[ -n "$flags" ]]; do
+      case "${flags:0:1}" in
+      p) prepend=true ;;
+      f) force=true ;;
+      *)
+        log_error "Unknown flag: -${flags:0:1}"
+        return 1
+        ;;
+      esac
+      flags="${flags:1}"
+    done
+  done
+
+  local file="$1"
+  local line="$2"
+
+  if [[ ! -f "$file" ]]; then
+    log_error "File not found: $file"
+    return 1
+  fi
+
+  if ! "$force" && grep -qxF "$line" "$file"; then
+    log_info "Already in [ $file ]: $line"
+    return
+  fi
+
+  if "$prepend"; then
+    local tmp
+    tmp=$(mktemp)
+    printf "%s\n" "$line" | cat - "$file" >"$tmp"
+    mv "$tmp" "$file"
+    log_success "Prepended to [ $file ]: $line"
+  else
+    echo "$line" >>"$file"
+    log_success "Appended to [ $file ]: $line"
+  fi
 }
