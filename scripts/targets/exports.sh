@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# TODO: Add .exports.local for the local exports
 setup_exports() {
   safe_link "$CONFIGS/exports/.exports" "$HOME/.exports"
 

@@ -17,6 +17,8 @@ set showmatch           " Highlight matching brackets
 
 set nowrap              " Disable line wrap
 
+inoremap jk <Esc>       " Exit insert mode by typing 'jk'
+
 
 " ---------- C++ support ----------
 filetype plugin indent on

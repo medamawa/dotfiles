@@ -5,3 +5,9 @@
 # ------------------------------------------------- #
 
 export PERCOL="fzf"
+
+# neo4j
+export NEO4J_HOME=$HOME/opt/neo4j-community-2026.02.3
+
+# Path
+export PATH=$NEO4J_HOME/bin:$PATH
