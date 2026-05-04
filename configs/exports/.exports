@@ -6,6 +6,9 @@
 
 export PERCOL="fzf"
 
+# python
+export PATH="$(brew --prefix python)/libexec/bin:$PATH"
+
 # neo4j
 export NEO4J_HOME=$HOME/opt/neo4j-community-2026.02.3
 
