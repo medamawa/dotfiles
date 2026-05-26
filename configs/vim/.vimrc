@@ -29,6 +29,7 @@ call plug#begin('~/.vim/plugged')
 
 " Auto close brackets
 Plug 'jiangmiao/auto-pairs'
+Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 
